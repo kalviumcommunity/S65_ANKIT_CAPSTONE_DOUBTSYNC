@@ -9,6 +9,9 @@ app.use(express.json())
 const connectDB=require("./config/db")
 connectDB()
 
+const userRoutes=require("./Routes/userRoute")
+app.use("/",userRoutes)
+
 app.get("/",(req,res)=>{
     res.send("root page")
 })
