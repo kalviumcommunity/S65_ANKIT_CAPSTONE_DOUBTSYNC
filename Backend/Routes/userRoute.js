@@ -8,6 +8,7 @@ const {logout}=require("../Controllers/userController")
 
 const {showUsers}=require("../Controllers/userController")
 
+const {updateProfile}=require("../Controllers/userController")
 
 
 
@@ -17,7 +18,7 @@ router.post("/logout",logout);
 
 router.get("/showuser",showUsers);
 
-
+router.put("/updateprofile",updateProfile)
 
 
 
