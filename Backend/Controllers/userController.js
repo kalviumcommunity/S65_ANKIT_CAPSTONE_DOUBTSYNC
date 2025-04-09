@@ -95,9 +95,27 @@ const logout=(req,res)=>{
 }
 
 
+const showUsers=async(req,res)=>{
+    try {
+        const allUsers=await userModel.find()
+        
+        res.status(200).json({message:"All users fetched successfully ",allUsers})
+        
+    } catch (error) {
+        res.status(500).json({message:"Internal server error",error: error.message})
+        
+    }
+
+}
+
+
+
 
 module.exports={
     signup,
     login,
-    logout
+    logout,
+
+    showUsers,
+
 }
