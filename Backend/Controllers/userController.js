@@ -94,6 +94,36 @@ const logout=(req,res)=>{
     }
 }
 
+const updateProfile = async (req, res) => {
+    try {
+        const { email, oldPassword, newPassword } = req.body;
+
+        if (!email || !oldPassword || !newPassword) {
+            return res.status(400).json({ message: "Email, old password, and new password are required" });
+        }
+
+        const user = await userModel.findOne({ email });
+
+        if (!user) {
+            return res.status(403).json({ message: "User not found" });
+        }
+
+        const isMatch = await bcrypt.compare(oldPassword, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ message: "Old password is incorrect" });
+        }
+
+        const hashPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashPassword;
+        await user.save();
+
+        return res.status(200).json({ message: "Password updated successfully", success: true });
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+};
+
 
 const showUsers=async(req,res)=>{
     try {
