@@ -118,4 +118,5 @@ module.exports={
 
     showUsers,
 
+    updateProfile
 }
