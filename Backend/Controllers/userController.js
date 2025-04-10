@@ -1,6 +1,6 @@
 const bcrypt =require("bcryptjs")
 const userModel=require("../Models/userSchema")
-
+const jwt=require("jsonwebtoken")
 
 
 const generateJWT=(payload)=>{
@@ -57,7 +57,7 @@ const login=async(req,res)=>{
             return res.status(401).json({ message: "Invalid credentials" });
         }
 
-        const token= await generateJWT({userId:isUserRegistered._id,email})
+        const token= generateJWT({userId:isUserRegistered._id,email})
         res.cookie("token",token,{
             httpOnly:true,
             secure:true,
