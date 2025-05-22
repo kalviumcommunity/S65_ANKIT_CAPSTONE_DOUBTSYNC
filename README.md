@@ -1,6 +1,6 @@
 # DoubtSync
 
-## Backend deployment:https://s65-ankit-capstone-doubtsync.onrender.com/ 
+## Frontend deployment:https://frontenddeploy-ny37ru59d-ankit-kumars-projects-1aafe4d1.vercel.app/
 
 ## 📘 Project Overview  
 **DoubtSync** is a real-time **1-to-1 mentor-student doubt-solving platform** that enables college students to instantly connect with expert mentors for quick and effective doubt resolution. Students can send **text-based questions** or upload **images of their queries**, and mentors provide personalized solutions through live interaction.
