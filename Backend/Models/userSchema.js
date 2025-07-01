@@ -11,11 +11,20 @@ const userSchema=new mongoose.Schema({
         default:"student"
     },
 
+    subjects: {
+        type: [String], // Array of subjects, like ['DSA', 'AI', 'Career']
+        default: []
+    },
     isOnline:{
         type:Boolean,
         enum:[true,false],
         default:false
 
+    },
+
+     isAvailable: {
+        type: Boolean, 
+        default: false
     }
 })
 
