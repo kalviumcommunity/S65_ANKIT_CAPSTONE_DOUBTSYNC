@@ -1,12 +1,16 @@
 const bcrypt =require("bcryptjs")
-const userModel=require("../Models/userSchema")
 const jwt=require("jsonwebtoken")
 
+const userModel=require("../Models/userSchema")
+const doubtModel = require("../Models/doubtSchema");
 
 const generateJWT=(payload)=>{
     return jwt.sign(payload,process.env.SECRET_KEY, { expiresIn: "7d" })
 
 }
+
+
+
 
 
 
@@ -23,10 +27,14 @@ const signup=async(req,res)=>{
         if(!name || !email || !password){
           return res.status(403).json({message:"name,email,password these are fields are required!!"})
         }
+
+            if (!role || !["student", "teacher"].includes(role)) {
+      return res.status(400).json({ message: "Role must be either 'student' or 'teacher'" });
+    }
       
         const hashedPassword=await bcrypt.hash(password,10)
         // req.body.password = bcrypt.hash(req.body.password, 10)
-        const newUser=new userModel({name,email,password:hashedPassword})
+        const newUser=new userModel({name,email,password:hashedPassword,role})
         // const newUser=new userSignupModel(req.body)
         await newUser.save()
 
@@ -56,8 +64,14 @@ const login=async(req,res)=>{
         if(!isPasswordValid){
             return res.status(401).json({ message: "Invalid credentials" });
         }
+       await userModel.findByIdAndUpdate(isUserRegistered._id, { isOnline: true }); // ✅ Update isOnline to true
 
-        const token= generateJWT({userId:isUserRegistered._id,email})
+        const token = generateJWT({ 
+        userId: isUserRegistered._id, 
+        email: isUserRegistered.email, 
+        role: isUserRegistered.role 
+        });
+
         res.cookie("token",token,{
             httpOnly:true,
             secure:true,
@@ -76,11 +90,14 @@ const login=async(req,res)=>{
 
 
 
-const logout=(req,res)=>{
+const logout=async(req,res)=>{
     try {
         if(!req.cookies.token){
             return res.status(400).json({message:"No cookie is present"})
         }
+
+        // ✅ Set isOnline to false for the logged-in user
+    await userModel.findByIdAndUpdate(req.user._id, { isOnline: false });
 
         res.clearCookie("token",{
             httpOnly:true,
@@ -93,36 +110,6 @@ const logout=(req,res)=>{
         res.status(500).json({message:"Internal server error",error})
     }
 }
-
-const updateProfile = async (req, res) => {
-    try {
-        const { email, oldPassword, newPassword } = req.body;
-
-        if (!email || !oldPassword || !newPassword) {
-            return res.status(400).json({ message: "Email, old password, and new password are required" });
-        }
-
-        const user = await userModel.findOne({ email });
-
-        if (!user) {
-            return res.status(403).json({ message: "User not found" });
-        }
-
-        const isMatch = await bcrypt.compare(oldPassword, user.password);
-        if (!isMatch) {
-            return res.status(401).json({ message: "Old password is incorrect" });
-        }
-
-        const hashPassword = await bcrypt.hash(newPassword, 10);
-        user.password = hashPassword;
-        await user.save();
-
-        return res.status(200).json({ message: "Password updated successfully", success: true });
-
-    } catch (error) {
-        res.status(500).json({ message: "Internal server error", error: error.message });
-    }
-};
 
 
 const showUsers=async(req,res)=>{
@@ -140,6 +127,137 @@ const showUsers=async(req,res)=>{
 
 
 
+const updateProfile = async (req, res) => {
+  try {
+    const { subjects, isAvailable } = req.body;
+
+    const updatedUser = await userModel.findByIdAndUpdate(
+      req.user._id,
+      {
+        ...(subjects && { subjects }),
+        ...(typeof isAvailable === "boolean" && { isAvailable }),
+      },
+      { new: true }
+    );
+
+    res.status(200).json({ message: "Profile updated", updatedUser });
+  } catch (error) {
+    res.status(500).json({ message: "Update failed", error: error.message });
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const askDoubt = async (req, res) => {
+  try {
+    const { question, subject } = req.body;
+
+    if (!question || !subject) {
+      return res.status(400).json({ message: "Question and subject are required." });
+    }
+
+    // Step 1: Create doubt
+    const newDoubt = new doubtModel({
+      studentId: req.user._id,
+      question,
+      subject,
+    });
+
+    // Step 2: Find available teacher with matching subject
+    const teacher = await userModel.findOne({
+      role: "teacher",
+      isAvailable: true,
+      isOnline: true,
+      subjects: subject, // exact match
+    });
+
+    if (teacher) {
+      newDoubt.matchedTeacherId = teacher._id;
+      newDoubt.status = "matched";
+      await newDoubt.save();
+
+      return res.status(200).json({
+        message: "Teacher matched successfully",
+        teacher: {
+          name: teacher.name,
+          email: teacher.email,
+          id: teacher._id,
+        },
+        doubtId: newDoubt._id,
+      });
+    } else {
+      // No matching teacher yet
+      await newDoubt.save();
+      return res.status(200).json({
+        message: "No available teacher found. Please try again shortly.",
+        doubtId: newDoubt._id,
+      });
+    }
+
+  } catch (error) {
+    res.status(500).json({ message: "Something went wrong", error: error.message });
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 module.exports={
     signup,
@@ -147,6 +265,9 @@ module.exports={
     logout,
 
     showUsers,
+    updateProfile,
 
-    updateProfile
+
+
+    askDoubt
 }
