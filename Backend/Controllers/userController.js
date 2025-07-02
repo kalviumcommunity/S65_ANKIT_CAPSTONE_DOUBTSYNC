@@ -81,7 +81,15 @@ const login=async(req,res)=>{
         })
 
 
-        res.status(201).json({message:"Login Successfully",success:true})
+      res.status(201).json({
+        message: "Login Successfully",
+        success: true,
+        user: {
+          id: isUserRegistered._id,
+          name: isUserRegistered.name,
+          role: isUserRegistered.role,
+        },
+      });
         
     } catch (error) {
         res.status(500).json({message:"Internal server error",error})
@@ -162,78 +170,59 @@ const updateProfile = async (req, res) => {
 
 
 
-
 const askDoubt = async (req, res) => {
   try {
-    const { question, subject } = req.body;
+    const { question, subject, studentSocketId } = req.body;
 
-    if (!question || !subject) {
-      return res.status(400).json({ message: "Question and subject are required." });
+    if (!question || !subject || !studentSocketId) {
+      return res.status(400).json({ message: "All fields required." });
     }
 
-    // Step 1: Create doubt
+    // Create new doubt
     const newDoubt = new doubtModel({
       studentId: req.user._id,
       question,
       subject,
+      studentSocketId,
     });
 
-    // Step 2: Find available teacher with matching subject
+    // Find available teacher
     const teacher = await userModel.findOne({
       role: "teacher",
-      isAvailable: true,
       isOnline: true,
-      subjects: subject, // exact match
+      isAvailable: true,
+      subjects: subject,
+      socketId: { $exists: true },
     });
 
+    await newDoubt.save();
+
     if (teacher) {
-      newDoubt.matchedTeacherId = teacher._id;
-      newDoubt.status = "matched";
-      await newDoubt.save();
+      // Send doubt to teacher via socket
+      const io = req.app.get("io"); // You must store io instance on app object in server.js
+      io.to(teacher.socketId).emit("incoming_doubt", {
+        doubtId: newDoubt._id,
+        studentName: req.user.name,
+        question,
+        subject,
+        studentSocketId,
+      });
 
       return res.status(200).json({
-        message: "Teacher matched successfully",
-        teacher: {
-          name: teacher.name,
-          email: teacher.email,
-          id: teacher._id,
-        },
+        message: "Doubt sent to teacher",
         doubtId: newDoubt._id,
       });
     } else {
-      // No matching teacher yet
-      await newDoubt.save();
       return res.status(200).json({
-        message: "No available teacher found. Please try again shortly.",
+        message: "No available teacher",
         doubtId: newDoubt._id,
       });
     }
-
   } catch (error) {
-    res.status(500).json({ message: "Something went wrong", error: error.message });
+    console.log(error)
+    return res.status(500).json({ message: "Internal error", error: error.message });
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

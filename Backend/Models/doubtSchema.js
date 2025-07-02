@@ -6,19 +6,21 @@ const doubtSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  question: {
+  studentSocketId: {
     type: String,
     required: true,
   },
-  subject: {
-    type: String,
-    required: true,
-  },
+
+  
+  question: { type: String, required: true },
+  subject: { type: String, required: true },
   matchedTeacherId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     default: null,
   },
+
+
   status: {
     type: String,
     enum: ["pending", "matched", "rejected"],

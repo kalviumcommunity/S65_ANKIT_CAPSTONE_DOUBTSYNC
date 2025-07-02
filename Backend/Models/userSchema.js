@@ -25,7 +25,13 @@ const userSchema=new mongoose.Schema({
      isAvailable: {
         type: Boolean, 
         default: false
-    }
+    },
+
+
+    socketId: {
+        type: String,
+        default: null
+     }
 })
 
 
