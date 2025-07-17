@@ -2,8 +2,13 @@ const mongoose=require("mongoose")
 
 const userSchema=new mongoose.Schema({
     name:{type:String,required:true,minLength:3},
-    email:{type:String,required:true},
-    password:{type:String,required:true,minLength:3},
+  email: {
+  type: String,
+  required: true,
+  unique: true,
+  match: [/^[^@]+@[^@]+\.com$/, 'Email must be a valid email']
+},
+    password:{type:String,required:true,minLength:4},
 
     role:{ 
         type:String,
@@ -31,7 +36,16 @@ const userSchema=new mongoose.Schema({
     socketId: {
         type: String,
         default: null
-     }
+     },
+       phone: {
+    type: String,
+    default: ""
+  },
+
+  location: {
+    type: String,
+    default: ""
+  }
 })
 
 

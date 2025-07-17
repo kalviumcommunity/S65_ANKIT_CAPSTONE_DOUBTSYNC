@@ -1,0 +1,365 @@
+/* ========= Global Animations ========= */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 50% 100%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+
+/* ========= Container ========= */
+.dashboardContainer {
+  min-height: 100vh;
+  padding: 40px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 40px;
+  background: linear-gradient(
+    to bottom,
+    #0f0018 0%,
+    #1a002a 15%,
+    #8f5dd8 35%,
+    #b984f2 50%,
+    #8f5dd8 65%,
+    #2a004f 85%,
+    #140022 100%
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.textAndAskContainerCombined {
+  margin-top: 75px;
+}
+
+.textAndAskContainerCombined .dashboardGreeting {
+  margin-bottom: 20px;
+}
+
+
+/* ========= Ask Doubt Box ========= */
+.askDoubtContainer {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  animation: fadeInUp 0.6s ease-in-out;
+  color: #1f1f1f;
+}
+
+.askDoubtContainer:hover {
+  transform: translateY(-4px);
+}
+
+.askDoubtContainer h2 {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: #3c1f91;
+}
+
+
+/* ========= Textarea ========= */
+textarea {
+  width: 95%;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  resize: none;
+  outline: none;
+  background-color: #f9faff;
+  color: #1a1a1a;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s;
+}
+
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+  border-color: #8b5cf6;
+}
+
+
+/* ========= Subject Tags ========= */
+.subjectOptions {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.subjectBtn {
+  padding: 10px 20px;
+  background: #ffffff;
+  color: #3c1f91;
+  font-weight: 600;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.subjectBtn:hover {
+  border-color: #3c1f91;
+  background-color: #f0f6ff;
+  transform: translateY(-2px);
+}
+
+.selected {
+  background-color: #3c1f91;
+  color: #ffffff;
+  border: 2px solid #3c1f91;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(60, 31, 145, 0.3);
+}
+.selected:hover {
+  background-color: #3c1f91;
+  color: #ffffff;
+
+}
+
+
+/* ========= Ask Button ========= */
+.askBtn {
+  background-color: #3c1f91;
+  color: white;
+  padding: 14px 30px;
+  margin-top: 30px;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(60, 31, 145, 0.4);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.askBtn:hover {
+  background-color: #2a1473;
+  transform: scale(1.05);
+}
+
+.askBtn:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+
+/* ========= Modal Box ========= */
+.connectingModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modalBox {
+  background: #ffffff;
+  color: #1f1f1f;
+  border-radius: 16px;
+  padding: 40px 30px;
+  text-align: center;
+  max-width: 320px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: popIn 0.4s ease;
+}
+
+
+/* ========= Timer ========= */
+.timerCircle {
+  font-size: 34px;
+  margin: 24px 0;
+  font-weight: bold;
+  color: #3c1f91;
+  animation: pulse 1.2s infinite;
+}
+
+
+/* ========= Cancel Button ========= */
+.cancelBtn {
+  background: linear-gradient(to right, #c90707 50%, #e63946 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-position 0.4s ease, color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.cancelBtn:hover {
+  background-position: right bottom;
+  border: 2px solid #e63946;
+}
+
+
+.dashboardGreeting {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: 6px;
+}
+
+
+/* --------------- */
+
+.inlineLottie {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: 8px;
+  position: relative;
+  top: 7px;
+}
+
+
+/* ---------------------- */
+/* -----RESPONSIVE---------- */
+/* ---------------------- */
+
+@media (max-width: 480px) {
+  .inlineLottie {
+    height: 30px;
+    width: 30px;
+  }
+
+  .dashboardContainer {
+    padding: 24px 16px;
+    gap: 28px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .textAndAskContainerCombined {
+    margin-top: 60px;
+  }
+
+  .dashboardGreeting {
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 0;
+    text-align: center;
+    color: #f3f4f6;
+  }
+
+  .askDoubtContainer {
+    padding: 26px 20px;
+    border-radius: 18px;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .askDoubtContainer h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: #3c1f91;
+  }
+
+  textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+    border-radius: 12px;
+    width: 100%;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.04);
+    background-color: #fefefe;
+  }
+
+  .subjectOptions {
+    margin-top: 18px;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .subjectBtn {
+    padding: 10px 16px;
+    font-size: 13.5px;
+    border-radius: 30px;
+    font-weight: 600;
+  }
+
+  .askBtn {
+    padding: 12px 26px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 14px;
+    margin-top: 24px;
+    box-shadow: 0 6px 16px rgba(60, 31, 145, 0.3);
+  }
+
+  .connectingModal .modalBox {
+    padding: 28px 22px;
+    max-width: 92%;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .timerCircle {
+    font-size: 26px;
+    margin: 18px 0;
+    color: #3c1f91;
+    animation: pulse 1.3s infinite;
+  }
+
+  .cancelBtn {
+    padding: 9px 20px;
+    font-size: 13.5px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  .inlineLottie {
+    height: 24px;
+    width: 24px;
+    top: 5px;
+    margin-left: 6px;
+  }
+}

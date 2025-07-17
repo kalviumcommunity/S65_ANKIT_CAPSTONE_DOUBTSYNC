@@ -30,6 +30,11 @@ const doubtSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+
+
+
+
+  isAssigned: { type: Boolean, default: false },
 });
 
 module.exports = mongoose.model("Doubt", doubtSchema, "doubts");

@@ -1,0 +1,296 @@
+/* ===== Student Navbar Redesigned ===== */
+.student-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 24px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9); 
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.burger-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #3c1f91;
+  transition: color 0.3s;
+}
+.burger-icon:hover {
+  color: #5e3bdb;
+}
+
+.logo {
+  height: 36px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+.brand-link:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #3c1f91;
+  margin: 0;
+  margin-left: -7px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.premium-btn {
+  background-color: #facc15;
+  border: 1px solid rgba(0, 0, 0, 0.033);
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #111827;
+  box-shadow: 0 4px 12px rgba(250, 204, 21, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.premium-btn:hover {
+  background-color: #fbbf24;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(250, 204, 21, 0.5);
+}
+
+.icon,
+.dropdown-icon {
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+}
+.icon:hover,
+.dropdown-icon:hover {
+  color: #1f3f81;
+}
+
+.profile-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* === Sidebar Wrapper === */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 240px;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #2d004d 0%,
+    #7e4ccf 50%,
+    #3d0074 100%
+  );
+  color: white;
+  padding: 20px 20px;
+  transition: left 0.3s ease;
+  z-index: 2000;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+/* === Header: Title + Close === */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.close-btn {
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* === Menu Items === */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 8px;
+}
+
+.sidebar-menu li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 10px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.sidebar-menu li:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
+.sidebar-icon,
+.logout-icon {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+/* === Overlay === */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1500;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---------------- */
+/* ---------------- */
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ------------------------------------- */
+/* -----------RESPONSIVE :-====------ */
+/* ------------------------------------- */
+
+@media (max-width: 480px) {
+  .student-navbar {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  .navbar-left {
+    gap: 10px;
+  }
+
+  .burger-icon {
+    font-size: 22px;
+  }
+
+  .logo {
+    height: 28px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+    margin-left: -5px;
+  }
+
+  .navbar-right {
+    gap: 12px;
+  }
+
+  .premium-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+
+  .icon,
+  .dropdown-icon {
+    font-size: 18px;
+  }
+
+  .sidebar {
+    width: 200px;
+    padding: 16px 14px;
+  }
+
+  .sidebar-header {
+    margin-bottom: 20px;
+  }
+
+  .sidebar-title {
+    font-size: 18px;
+  }
+
+  .close-btn {
+    font-size: 18px;
+    padding: 4px;
+  }
+
+  .sidebar-menu li {
+    font-size: 14px;
+    padding: 10px 8px;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+
+  .sidebar-icon,
+  .logout-icon {
+    font-size: 16px;
+  }
+
+  .sidebar-overlay {
+    backdrop-filter: blur(1.5px);
+  }
+
+  .brand-link {
+    gap: 6px;
+  }
+}

@@ -1,0 +1,365 @@
+.dashboardContainer {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(
+    to bottom,
+    #0b0015 0%,
+    #12002b 20%,
+    #280061 45%,
+    #4a00a3 60%,
+    #280061 80%,
+    #12002b 95%,
+    #0b0015 100%
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Greeting */
+.greeting {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+
+.greeting span {
+  color: #4a3aff;
+}
+
+/* Skills box */
+.skillsBox {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 12px;
+  color: #fff;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #4a3aff;
+
+  
+}
+
+.skillsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.editSkillsBtn {
+  background-color: transparent;
+  color: #4a3aff;
+  border: 2px solid #4a3aff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.editSkillsBtn:hover {
+  background-color: #4a3aff;
+  color: #fff;
+}
+
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.skillTag {
+  background: #4a3aff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.skillTag:hover {
+  background-color: #3726e3;
+  transform: scale(1.03);
+  cursor: default;
+}
+
+.noSkillsText {
+  color: #ccc;
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* Toggle availability */
+.availabilityToggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  color: #333;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.toggleButton {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.toggleButton input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggleSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+  box-shadow: 0 0 4px rgba(74, 58, 255, 0.5);
+}
+
+.toggleSlider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.toggleButton input:checked + .toggleSlider {
+  background-color: #4a3aff;
+}
+
+.toggleButton input:checked + .toggleSlider:before {
+  transform: translateX(24px);
+}
+
+.statusIndicator {
+  margin-top: 10px;
+  color: #ffffff;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  /* border: 2px solid red; */
+}
+
+.greenDot, .redDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.greenDot {
+  background-color: #28a745;
+  animation: pulse 1.5s infinite;
+}
+
+.redDot {
+  background-color: #dc3545;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Doubt Card */
+.doubtCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 520px;
+  animation: popIn 0.4s ease;
+  transition: all 0.3s ease;
+}
+
+.doubtCard h3 {
+  font-size: 22px;
+  color: #4a3aff;
+  margin-bottom: 18px;
+}
+
+.doubtCard p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+.acceptBtn {
+  margin-top: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.acceptBtn:hover {
+  background-color: #218838;
+  transform: scale(1.03);
+}
+
+.roomHeading {
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .doubtCard {
+    padding: 24px;
+  }
+
+  .acceptBtn {
+    width: 100%;
+  }
+}
+
+.loadingText {
+  font-size: 18px;
+  color: #ccc;
+  margin-top: 60px;
+  text-align: center;
+}
+.availabilitySection {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px 26px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  color: #fff;
+
+
+}
+
+
+
+
+
+/* --------------------------- */
+/* -----RESPONSIVE-------- */
+/* --------------------------- */
+
+@media (max-width: 480px) {
+  .dashboardContainer {
+    padding: 24px 14px;
+    gap: 24px;
+  }
+
+  .greeting {
+    font-size: 20px;
+    text-align: center;
+  }
+
+
+
+  .statusIndicator {
+    font-size: 14px;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .doubtCard {
+    padding: 20px;
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .doubtCard h3 {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .doubtCard p {
+    font-size: 14px;
+  }
+
+  .acceptBtn {
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .roomHeading {
+    font-size: 22px;
+    margin-top: 18px;
+  }
+
+}

@@ -1,0 +1,222 @@
+.pageWrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1c0033, #4b0082, #1a002a);
+  color: white;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 60px;
+  text-align: center;
+  background-attachment: fixed;
+}
+
+.goBackBtn {
+  align-self: flex-start;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  background: transparent;
+  border: 2px solid #9d7dff;
+  color: #9d7dff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.goBackBtn:hover {
+  background-color: #9d7dff;
+  color: #1c0033;
+}
+
+.heading {
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(to right, #fff, #9d7dff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  /* border: 2px solid red; */
+
+  margin-top: -10px;
+}
+
+.subheading {
+  font-size: 18px;
+  color: #ccc;
+  margin-bottom: 40px;
+  max-width: 600px;
+
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 10px;
+}
+
+.planCard {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  width: 280px;
+  padding: 28px 22px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.planCard:hover {
+  transform: translateY(-10px);
+}
+
+.planTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.minutes {
+  font-size: 18px;
+  font-weight: 500;
+  color: #b9b4f7;
+}
+
+.price {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 16px 0;
+  color: #ffd700;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+  color: #e0dfff;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.buyBtn {
+  background: linear-gradient(to right, #ffcc00, #ffa500);
+  color: #1a0033;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buyBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .cardContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .planCard {
+    width: 90%;
+  }
+
+  .goBackBtn {
+    margin-left: 0;
+    align-self: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------- */
+/* ------RESPONSIVE------- */
+/* -------------------------- */
+
+@media (max-width: 480px) {
+  .pageWrapper {
+    padding: 30px 16px 50px;
+  }
+
+  .heading {
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  .subheading {
+    font-size: 14px;
+    margin-bottom: 30px;
+    max-width: 100%;
+    padding: 0 8px;
+  }
+
+  .goBackBtn {
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    align-self: center;
+  }
+
+  .cardContainer {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+  }
+
+  .planCard {
+    width: 100%;
+    padding: 24px 18px;
+    border-radius: 16px;
+  }
+
+  .planTitle {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .minutes {
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 24px;
+    margin: 14px 0;
+  }
+
+  .featureList {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .buyBtn {
+    font-size: 15px;
+    padding: 10px 18px;
+    border-radius: 8px;
+  }
+}

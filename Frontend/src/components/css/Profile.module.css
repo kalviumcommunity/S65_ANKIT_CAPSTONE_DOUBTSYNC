@@ -1,0 +1,220 @@
+.profilePage .profileWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 100px;
+  padding: 50px 40px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 30px auto 0 auto;
+}
+
+.profilePage .profileLeft {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profilePage .profileLeft canvas,
+.profilePage .profileLeft svg {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.profilePage .profileContainer {
+  flex: 1;
+  min-width: 320px;
+  max-width: 520px;
+  background: #ffffff;
+  padding: 28px 32px;
+  border-radius: 16px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.profilePage .profileTitle {
+  font-size: 26px;
+  font-weight: 700;
+  color: #3a36db;
+  margin-bottom: 28px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.profilePage .profileForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profilePage .profileForm label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #555;
+}
+
+.profilePage .profileForm input {
+  padding: 12px 16px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.profilePage .profileForm input:read-only {
+  background-color: #f1f1f1;
+  color: #777;
+  cursor: not-allowed;
+}
+
+.profilePage .profileForm input:focus {
+  border-color: #3a36db;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.profilePage .profileButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.profilePage .editBtn,
+.profilePage .saveBtn,
+.profilePage .cancelBtn {
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.profilePage .editBtn {
+  background-color: #3a36db;
+  color: white;
+}
+
+.profilePage .editBtn:hover {
+  background-color: #2f2ac1;
+}
+
+.profilePage .saveBtn {
+  background-color: #28a745;
+  color: white;
+}
+
+.profilePage .saveBtn:hover {
+  background-color: #218838;
+}
+
+.profilePage .cancelBtn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.profilePage .cancelBtn:hover {
+  background-color: #c0392b;
+}
+
+.goBackBtn {
+  align-self: flex-start;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background: transparent;
+  border: 2px solid #9d7dff;
+  color: #9d7dff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  float: right;
+  margin-right: 25px;
+}
+
+.goBackBtn:hover {
+  background-color: #9d7dff;
+  color: #1c0033;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .profilePage .profileWrapper {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .profilePage .profileLeft,
+  .profilePage .profileContainer {
+    max-width: 100%;
+  }
+
+  .profilePage .profileButtons {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profilePage .profileWrapper {
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px 16px;
+  }
+
+  .profilePage .profileLeft {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .profilePage .profileContainer {
+    max-width: 100%;
+    padding: 24px 20px;
+    border-radius: 14px;
+  }
+
+  .profilePage .profileTitle {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .profilePage .profileForm label {
+    font-size: 13px;
+  }
+
+  .profilePage .profileForm input {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .profilePage .profileButtons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .profilePage .editBtn,
+  .profilePage .saveBtn,
+  .profilePage .cancelBtn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .goBackBtn {
+    align-self: center;
+    float: none;
+    margin: 2 0 20px 0;
+    padding: 6px 14px;
+    font-size: 13px;
+  }
+}

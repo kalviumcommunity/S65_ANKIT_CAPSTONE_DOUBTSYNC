@@ -1,0 +1,43 @@
+.cursor-wrapper {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.fancy-cursor {
+  width: 12px;
+  height: 12px;
+  background-color: #00c2ff;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s ease;
+}
+
+.fancy-trail {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #00c2ff;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+.cursor-clickburst {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #ff6b81;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.burst-animate {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.5);
+}
