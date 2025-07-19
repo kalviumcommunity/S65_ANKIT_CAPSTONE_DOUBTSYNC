@@ -196,6 +196,9 @@
 
 
 
+/* --------------------------------- */
+/* --------------------------------- */
+/* --------------------------------- */
 
 
 
@@ -207,20 +210,139 @@
 
 
 
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 16px;
+    gap: 8px;
+    height: auto;
 
 
+  }
+
+  .logoSection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    gap: 8px;
+
+  
+
+    margin-left: -10px;
+  }
+
+  .brandName {
+    font-size: 18px;
+  }
+
+  .navbarRightControls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+  }
+
+  .callTimer {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ef4444;
+    white-space: nowrap;
+  }
+
+  .endCallButton {
+    background-color: #ef4444;
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .logoWrapper {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logoIcon {
+    width: 28px;
+    height: 28px;
+  }
 
 
+  .videochatContainer {
+    flex-direction: column;
+    height: auto;
+  }
 
+  .remoteVideoSection {
+    height: 50vh;
+  }
 
+  .remoteVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 
+  .controlsOverlay {
+    bottom: 12px;
+    padding: 6px 12px;
+    gap: 4px;
+  }
 
+  .controlButton {
+    width: 36px;
+    height: 36px;
+  }
 
+  .controlButton svg {
+    width: 18px;
+    height: 18px;
+  }
 
+  .rightSection {
+    width: 100%;
+    max-width: none;
+    height: auto;
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+  }
 
+  .localVideoSection {
+    padding: 10px;
+    height: auto;
+    min-height: unset;
+  }
 
+  .localVideo {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+  }
 
+  .localLabel {
+    font-size: 10px;
+    padding: 3px 8px;
+    top: 12px;
+    right: 12px;
+  }
 
+  .chatSection {
+    height: 250px;
+  }
 
-
-
+  .participantLabel {
+    font-size: 12px;
+    padding: 4px 10px;
+    top: 10px;
+    left: 10px;
+  }
+}
