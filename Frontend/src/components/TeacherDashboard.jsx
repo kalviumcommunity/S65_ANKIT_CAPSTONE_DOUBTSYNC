@@ -146,7 +146,8 @@ const handleAccept = async () => {
     <h4>Your Skills</h4>
     <button
       className={styles.editSkillsBtn}
-      onClick={() => window.location.href = "/teacher/choose-skills"}
+      // onClick={() => window.location.href = "/teacher/choose-skills"}
+        onClick={() => navigate("/teacher/choose-skills")}
     >
       Edit
     </button>
