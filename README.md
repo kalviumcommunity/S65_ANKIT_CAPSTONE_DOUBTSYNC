@@ -1,6 +1,6 @@
 # DoubtSync
 
-  ### Frontend  deployment     https://capstone-doubt-sync.vercel.app/
+  ## Frontend  deployment     https://capstone-doubt-sync.vercel.app/
 ### Backend deployment link - https://capstone-doubtsync.onrender.com
 
 ## 📘 Project Overview  

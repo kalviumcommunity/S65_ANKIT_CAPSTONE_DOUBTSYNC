@@ -114,11 +114,12 @@ const logout = async (req, res) => {
     await userModel.findByIdAndUpdate(decoded.userId, { isOnline: false }); // as the user logout , setting "isOnline false"
 
 
-    res.clearCookie("token", {
-      httpOnly: true,
-      secure: false, // set true in production with HTTPS
-      sameSite: "lax", // "strict" or "lax"
-    });
+res.clearCookie("token", {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+});
+
 
     return res.status(200).json({ message: "Logout successful" });
   } catch (error) {
