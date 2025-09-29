@@ -12,7 +12,6 @@ router.post("/ask-doubt", authenticate, askDoubt);
 router.post("/try-assign-teacher", tryAssignTeacher);
 
 
-
 router.post("/signup",signup)
 router.post("/login",login)
 router.post("/logout", logout); 
