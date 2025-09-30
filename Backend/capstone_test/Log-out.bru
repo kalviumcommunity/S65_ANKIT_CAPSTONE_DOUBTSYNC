@@ -7,5 +7,13 @@ meta {
 post {
   url: http://localhost:8080/logout
   body: none
-  auth: inherit
+  auth: bearer
+}
+
+headers {
+  Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGRhOTBjNjQ3YTczYjAzNzM1NTYzMjUiLCJlbWFpbCI6InphY2sxMjM0QGdtYWlsLmNvbSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU5MTU0NzgyLCJleHAiOjE3NTk3NTk1ODJ9.FWjay5PvZN3GKFRZVl_iUyD5RElwDbn7C8_H2maO4pk; Max-Age=604800; Path=/; Expires=Mon, 06 Oct 2025 14:06:22 GMT; HttpOnly; Secure; SameSite=None
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OGRhOTBjNjQ3YTczYjAzNzM1NTYzMjUiLCJlbWFpbCI6InphY2sxMjM0QGdtYWlsLmNvbSIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzU5MTU0NzgyLCJleHAiOjE3NTk3NTk1ODJ9.FWjay5PvZN3GKFRZVl_iUyD5RElwDbn7C8_H2maO4pk
 }
