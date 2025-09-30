@@ -2,7 +2,7 @@ const express=require("express")
 const router=express.Router()
 
 
-const {signup,login, logout,showUsers,updateProfile,tryAssignTeacher,  getUserById,updateUserById}=require("../Controllers/userController")
+const {signup,login, logout,showUsers,updateProfile,tryAssignTeacher,  getUserById,updateUserById, deleteUserById}=require("../Controllers/userController")
 const authenticate = require("../Middleware/authMiddleware");
 const { askDoubt } = require("../Controllers/userController");
 
@@ -24,6 +24,9 @@ router.put("/updateprofile",authenticate,updateProfile)
 
 router.get("/user/:id",getUserById);
 router.put("/user/:id", updateUserById);
+
+router.delete("/user/:id", deleteUserById); //new DELETE
+
 
 
 router.get("/me", authenticate, (req, res) => {
